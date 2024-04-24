@@ -17,30 +17,23 @@ Once you are on the Remix website, create a new file by clicking on the "+" icon
 
 ```javascript
 
-// SPDX-License-Identifier: GPL-3.0
+// SPDX-License-Identifier: MIT
 
-pragma solidity >=0.8.2 <0.9.0;
+pragma solidity >=0.8.11 ;
 
+contract Movie{
+    string public movie;
 
-contract Error {
-    function testRequire(uint _i) public pure {
-        require(_i > 10, "Input must be greater than 10");
+    function getMovie() public view  returns (string memory){
+        return movie;
     }
 
-    function testRevert(uint _i) public pure {
-        if (_i <= 10) {
-            revert("Input must be greater than 10");
-        }
+    function setMovie(string memory movieName) public {
+        movie = movieName;
     }
-
-    uint public num;
-
-    function testAssert() public view {
-        assert(num == 0);
-    }
-
-
 }
+
+    
 
 
 ```
@@ -50,6 +43,38 @@ To compile the code, click on the "Solidity Compiler" tab in the left-hand sideb
 Once the code is compiled, you can deploy the contract by clicking on the "Deploy & Run Transactions" tab in the left-hand sidebar. Select the "Error" contract from the dropdown menu, and then click on the "Deploy" button.
 
 Once the contract is deployed, you can interact with it by passing the params in mint and burn functions and checking the values if it updates or not..
+
+### Executing program
+
+To deploy the contract first run the following command in terminal
+
+```javascript
+npx hardhat compile 
+```
+after the contract is compiled
+run this command which will deploy your contract on test net volta this is a whole differnt thing
+
+```javascript
+npx hardhat run --network volta scripts/deploy.js
+```
+
+after your contract is deployed you will get your contract address in the console
+paste it in src/Constant/constant.js
+
+now that you have deployed your contract just run in terminal
+and your project will run on web browser
+```javascript
+npm  start
+```
+
+## Authors
+
+Pulkit Dubey 
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE.md file for details
+
 
 ## Authors
 
